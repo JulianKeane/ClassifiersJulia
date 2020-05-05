@@ -15,7 +15,7 @@ initWeightsLike(X::Matrix) = zero(X[1, :])
 log_prob(X::Matrix, Y, w) = 1//(1+exp(-1*Diagonal(Y)*(X*w)))
 
 #computational method methods
-function gradientDescent(gradFunction::Function, learning_rate, itr::Integer, X::Matrix, Y::Matrix)
+function gradientDescent(gradFunction::Function, learning_rate, itr::Integer, X::Matrix, Y::Matrix, w)
     for i = 1:itr
         w = w-learning_rate*gradFunction(X,Y,w)
     end
@@ -24,5 +24,3 @@ end
 function SLPFit(X,Y)
     w = zero(X[1,:])
 end
-
-using Pkg 
